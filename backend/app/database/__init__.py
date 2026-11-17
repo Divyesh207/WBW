@@ -8,7 +8,7 @@ from sqlalchemy import create_engine
 from sqlalchemy.orm import DeclarativeBase, sessionmaker
 from sqlalchemy.pool import StaticPool
 
-DEFAULT_PATH = Path(__file__).resolve().parent / "wbw.db"
+DEFAULT_PATH = Path("/tmp/wbw.db") if os.getenv("VERCEL") else Path(__file__).resolve().parent / "wbw.db"
 DATABASE_URL = os.getenv("WBW_DATABASE_URL", f"sqlite:///{DEFAULT_PATH.as_posix()}")
 
 _kwargs: dict = {"connect_args": {"check_same_thread": False}}

@@ -7,7 +7,7 @@ from contextlib import asynccontextmanager
 from fastapi import FastAPI, Request
 from fastapi.exceptions import RequestValidationError
 from fastapi.middleware.cors import CORSMiddleware
-from fastapi.responses import JSONResponse
+from fastapi.responses import JSONResponse, RedirectResponse
 
 from app.api.routes import router
 from app.database import SessionLocal, init_db
@@ -33,7 +33,14 @@ app = FastAPI(
         "impact figures are estimates; this is not a certified ISO 14040/14044 LCA."
     ),
     lifespan=lifespan,
+    docs_url="/api/docs",
+    openapi_url="/api/openapi.json",
 )
+
+
+@app.get("/docs", include_in_schema=False)
+def docs_redirect():
+    return RedirectResponse(url="/api/docs")
 
 app.add_middleware(
     CORSMiddleware,
