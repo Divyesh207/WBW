@@ -1,0 +1,65 @@
+{
+  "meta": {
+    "title": "Illustrative packaging factors",
+    "status": "ILLUSTRATIVE — prototype screening values, not certified LCA data",
+    "note": "Cradle-to-gate production of 1 kg of packaging material. 'mass_ratio' on an alternative is the assumed mass of the replacement needed per kg of the original, because lighter materials are not always a like-for-like swap.",
+    "units": {
+      "emission_factor": "kg CO2e per kg packaging",
+      "embodied_energy": "MJ per kg packaging",
+      "water": "litres per kg packaging",
+      "typical_recyclability": "fraction typically captured for recycling where collection exists"
+    }
+  },
+  "options": [
+    { "id": "none", "name": "No packaging", "family": "none", "emission_factor": 0, "embodied_energy": 0, "water": 0, "typical_recyclability": 0, "uncertainty_pct": 0, "basis": "No packaging material.", "alternative": null },
+    {
+      "id": "conventional_plastic", "name": "Conventional plastic film (LDPE)", "family": "polymer",
+      "emission_factor": 2.6, "embodied_energy": 78, "water": 50, "typical_recyclability": 0.2, "uncertainty_pct": 30,
+      "basis": "Illustrative; virgin LDPE shrink/stretch film.",
+      "alternative": {
+        "to": "recycled_cardboard", "mass_ratio": 2.0,
+        "cost": "Board is usually cheaper per kg but more mass is needed; net cost is often similar.",
+        "feasibility": "Medium",
+        "feasibility_note": "Works for dry goods and multipacks; needs a change of packing line.",
+        "trade_offs": [
+          "Roughly twice the packaging mass is assumed, which raises transport weight.",
+          "No moisture barrier — unsuitable where products must stay dry in transit.",
+          "If the board is landfilled rather than recycled it can emit methane as it degrades."
+        ]
+      }
+    },
+    {
+      "id": "expanded_polystyrene", "name": "Expanded polystyrene foam", "family": "polymer",
+      "emission_factor": 3.3, "embodied_energy": 90, "water": 60, "typical_recyclability": 0.05, "uncertainty_pct": 30,
+      "basis": "Illustrative; EPS protective packaging.",
+      "alternative": {
+        "to": "moulded_pulp", "mass_ratio": 1.8,
+        "cost": "Tooling for moulded pulp is an up-front cost; unit cost is comparable at volume.",
+        "feasibility": "Medium",
+        "feasibility_note": "Needs custom tooling and drop-testing for fragile products.",
+        "trade_offs": [
+          "Heavier for the same cushioning, raising transport weight.",
+          "Less protection against moisture and repeated impact."
+        ]
+      }
+    },
+    {
+      "id": "corrugated_cardboard", "name": "Corrugated cardboard (virgin fibre)", "family": "paper",
+      "emission_factor": 0.9, "embodied_energy": 18, "water": 40, "typical_recyclability": 0.8, "uncertainty_pct": 35,
+      "basis": "Illustrative; corrugated board, mostly virgin fibre.",
+      "alternative": {
+        "to": "recycled_cardboard", "mass_ratio": 1.05,
+        "cost": "Typically cost-neutral.",
+        "feasibility": "High",
+        "feasibility_note": "Standard product from most box suppliers.",
+        "trade_offs": [
+          "Slightly lower stacking strength, so a marginally heavier board grade is assumed."
+        ]
+      }
+    },
+    { "id": "recycled_cardboard", "name": "Recycled cardboard", "family": "paper", "emission_factor": 0.6, "embodied_energy": 12, "water": 20, "typical_recyclability": 0.8, "uncertainty_pct": 40, "basis": "Illustrative; high recycled-fibre board, cut-off approach.", "alternative": null },
+    { "id": "moulded_pulp", "name": "Moulded pulp (recycled fibre)", "family": "paper", "emission_factor": 0.7, "embodied_energy": 14, "water": 25, "typical_recyclability": 0.8, "uncertainty_pct": 40, "basis": "Illustrative; moulded recycled fibre.", "alternative": null },
+    { "id": "paper_wrap", "name": "Paper wrap", "family": "paper", "emission_factor": 1.1, "embodied_energy": 25, "water": 60, "typical_recyclability": 0.75, "uncertainty_pct": 35, "basis": "Illustrative; virgin kraft paper.", "alternative": null },
+    { "id": "recycled_plastic_film", "name": "Recycled plastic film", "family": "polymer", "emission_factor": 1.3, "embodied_energy": 35, "water": 25, "typical_recyclability": 0.2, "uncertainty_pct": 40, "basis": "Illustrative; film with high post-consumer recycled content.", "alternative": null }
+  ]
+}

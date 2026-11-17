@@ -1,0 +1,888 @@
+{
+  "methodology_version": "1.1",
+  "product": "500 ml drinks bottle",
+  "basis": "Per bottle. Same packaging, 400 km road transport and landfill disposal for every option; process electricity at the indicative benchmark for each method.",
+  "disclaimer": "Preliminary environmental screening based on illustrative factors. All impact figures are estimates, not measurements, and this is not a certified ISO 14040/14044 Life Cycle Assessment.",
+  "indicators": [
+    {
+      "key": "carbon_kg",
+      "label": "Carbon",
+      "unit": "g CO2e",
+      "scale": 1000
+    },
+    {
+      "key": "energy_kwh",
+      "label": "Energy",
+      "unit": "Wh",
+      "scale": 1000
+    },
+    {
+      "key": "water_l",
+      "label": "Water",
+      "unit": "L",
+      "scale": 1
+    },
+    {
+      "key": "raw_material_kg",
+      "label": "Materials",
+      "unit": "g",
+      "scale": 1000
+    },
+    {
+      "key": "waste_kg",
+      "label": "Waste",
+      "unit": "g",
+      "scale": 1000
+    }
+  ],
+  "sources": [
+    {
+      "id": "grid_average",
+      "label": "Grid electricity"
+    },
+    {
+      "id": "renewable_mix",
+      "label": "Renewable electricity"
+    }
+  ],
+  "options": [
+    {
+      "id": "virgin_pet",
+      "label": "Virgin PET",
+      "look": "pet",
+      "note": "The common single-use bottle: light, but made from fossil feedstock.",
+      "mass_g": 25,
+      "factor": 3.0,
+      "results": {
+        "grid_average": {
+          "carbon_kg": 0.1023,
+          "energy_kwh": 0.6844,
+          "water_l": 1.846,
+          "raw_material_kg": 0.02977,
+          "waste_kg": 0.0007732,
+          "carbon_low_kg": 0.07194,
+          "carbon_high_kg": 0.1327,
+          "uncertainty_pct": 30,
+          "stages": [
+            {
+              "key": "materials",
+              "label": "Raw materials",
+              "carbon_kg": 0.07732,
+              "share_pct": 75.6
+            },
+            {
+              "key": "manufacturing",
+              "label": "Manufacturing energy",
+              "carbon_kg": 0.012,
+              "share_pct": 11.7
+            },
+            {
+              "key": "packaging",
+              "label": "Packaging",
+              "carbon_kg": 0.0104,
+              "share_pct": 10.2
+            },
+            {
+              "key": "transport",
+              "label": "Transportation",
+              "carbon_kg": 0.00116,
+              "share_pct": 1.1
+            },
+            {
+              "key": "end_of_life",
+              "label": "End-of-life",
+              "carbon_kg": 0.00145,
+              "share_pct": 1.4
+            }
+          ]
+        },
+        "renewable_mix": {
+          "carbon_kg": 0.09133,
+          "energy_kwh": 0.6844,
+          "water_l": 1.846,
+          "raw_material_kg": 0.02977,
+          "waste_kg": 0.0007732,
+          "carbon_low_kg": 0.06344,
+          "carbon_high_kg": 0.1192,
+          "uncertainty_pct": 30,
+          "stages": [
+            {
+              "key": "materials",
+              "label": "Raw materials",
+              "carbon_kg": 0.07732,
+              "share_pct": 84.7
+            },
+            {
+              "key": "manufacturing",
+              "label": "Manufacturing energy",
+              "carbon_kg": 0.001,
+              "share_pct": 1.1
+            },
+            {
+              "key": "packaging",
+              "label": "Packaging",
+              "carbon_kg": 0.0104,
+              "share_pct": 11.4
+            },
+            {
+              "key": "transport",
+              "label": "Transportation",
+              "carbon_kg": 0.00116,
+              "share_pct": 1.3
+            },
+            {
+              "key": "end_of_life",
+              "label": "End-of-life",
+              "carbon_kg": 0.00145,
+              "share_pct": 1.6
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "recycled_pet",
+      "label": "Recycled PET",
+      "look": "rpet",
+      "note": "Same bottle, same mass, made from recovered plastic.",
+      "mass_g": 25,
+      "factor": 1.2,
+      "results": {
+        "grid_average": {
+          "carbon_kg": 0.05594,
+          "energy_kwh": 0.3264,
+          "water_l": 0.8155,
+          "raw_material_kg": 0.02977,
+          "waste_kg": 0.0007732,
+          "carbon_low_kg": 0.03637,
+          "carbon_high_kg": 0.0755,
+          "uncertainty_pct": 35,
+          "stages": [
+            {
+              "key": "materials",
+              "label": "Raw materials",
+              "carbon_kg": 0.03093,
+              "share_pct": 55.3
+            },
+            {
+              "key": "manufacturing",
+              "label": "Manufacturing energy",
+              "carbon_kg": 0.012,
+              "share_pct": 21.5
+            },
+            {
+              "key": "packaging",
+              "label": "Packaging",
+              "carbon_kg": 0.0104,
+              "share_pct": 18.6
+            },
+            {
+              "key": "transport",
+              "label": "Transportation",
+              "carbon_kg": 0.00116,
+              "share_pct": 2.1
+            },
+            {
+              "key": "end_of_life",
+              "label": "End-of-life",
+              "carbon_kg": 0.00145,
+              "share_pct": 2.6
+            }
+          ]
+        },
+        "renewable_mix": {
+          "carbon_kg": 0.04494,
+          "energy_kwh": 0.3264,
+          "water_l": 0.8155,
+          "raw_material_kg": 0.02977,
+          "waste_kg": 0.0007732,
+          "carbon_low_kg": 0.02787,
+          "carbon_high_kg": 0.062,
+          "uncertainty_pct": 40,
+          "stages": [
+            {
+              "key": "materials",
+              "label": "Raw materials",
+              "carbon_kg": 0.03093,
+              "share_pct": 68.8
+            },
+            {
+              "key": "manufacturing",
+              "label": "Manufacturing energy",
+              "carbon_kg": 0.001,
+              "share_pct": 2.2
+            },
+            {
+              "key": "packaging",
+              "label": "Packaging",
+              "carbon_kg": 0.0104,
+              "share_pct": 23.1
+            },
+            {
+              "key": "transport",
+              "label": "Transportation",
+              "carbon_kg": 0.00116,
+              "share_pct": 2.6
+            },
+            {
+              "key": "end_of_life",
+              "label": "End-of-life",
+              "carbon_kg": 0.00145,
+              "share_pct": 3.2
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "glass",
+      "label": "Glass",
+      "look": "glass",
+      "note": "Low impact per kilogram, but the bottle weighs about eleven times more.",
+      "mass_g": 280,
+      "factor": 1.2,
+      "results": {
+        "grid_average": {
+          "carbon_kg": 0.6769,
+          "energy_kwh": 1.931,
+          "water_l": 4.721,
+          "raw_material_kg": 0.2987,
+          "waste_kg": 0.01474,
+          "carbon_low_kg": 0.4875,
+          "carbon_high_kg": 0.8664,
+          "uncertainty_pct": 30,
+          "stages": [
+            {
+              "key": "materials",
+              "label": "Raw materials",
+              "carbon_kg": 0.3537,
+              "share_pct": 52.2
+            },
+            {
+              "key": "manufacturing",
+              "label": "Manufacturing energy",
+              "carbon_kg": 0.2957,
+              "share_pct": 43.7
+            },
+            {
+              "key": "packaging",
+              "label": "Packaging",
+              "carbon_kg": 0.0104,
+              "share_pct": 1.5
+            },
+            {
+              "key": "transport",
+              "label": "Transportation",
+              "carbon_kg": 0.01136,
+              "share_pct": 1.7
+            },
+            {
+              "key": "end_of_life",
+              "label": "End-of-life",
+              "carbon_kg": 0.0058,
+              "share_pct": 0.9
+            }
+          ]
+        },
+        "renewable_mix": {
+          "carbon_kg": 0.4059,
+          "energy_kwh": 1.931,
+          "water_l": 4.721,
+          "raw_material_kg": 0.2987,
+          "waste_kg": 0.01474,
+          "carbon_low_kg": 0.278,
+          "carbon_high_kg": 0.5337,
+          "uncertainty_pct": 30,
+          "stages": [
+            {
+              "key": "materials",
+              "label": "Raw materials",
+              "carbon_kg": 0.3537,
+              "share_pct": 87.1
+            },
+            {
+              "key": "manufacturing",
+              "label": "Manufacturing energy",
+              "carbon_kg": 0.02464,
+              "share_pct": 6.1
+            },
+            {
+              "key": "packaging",
+              "label": "Packaging",
+              "carbon_kg": 0.0104,
+              "share_pct": 2.6
+            },
+            {
+              "key": "transport",
+              "label": "Transportation",
+              "carbon_kg": 0.01136,
+              "share_pct": 2.8
+            },
+            {
+              "key": "end_of_life",
+              "label": "End-of-life",
+              "carbon_kg": 0.0058,
+              "share_pct": 1.4
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "aluminium",
+      "label": "Aluminium",
+      "look": "aluminium",
+      "note": "Light and endlessly recyclable, but primary aluminium is energy-intensive.",
+      "mass_g": 28,
+      "factor": 12.0,
+      "results": {
+        "grid_average": {
+          "carbon_kg": 0.3965,
+          "energy_kwh": 1.751,
+          "water_l": 2.789,
+          "raw_material_kg": 0.03511,
+          "waste_kg": 0.003111,
+          "carbon_low_kg": 0.2406,
+          "carbon_high_kg": 0.5524,
+          "uncertainty_pct": 40,
+          "stages": [
+            {
+              "key": "materials",
+              "label": "Raw materials",
+              "carbon_kg": 0.3733,
+              "share_pct": 94.2
+            },
+            {
+              "key": "manufacturing",
+              "label": "Manufacturing energy",
+              "carbon_kg": 0.01075,
+              "share_pct": 2.7
+            },
+            {
+              "key": "packaging",
+              "label": "Packaging",
+              "carbon_kg": 0.0104,
+              "share_pct": 2.6
+            },
+            {
+              "key": "transport",
+              "label": "Transportation",
+              "carbon_kg": 0.00128,
+              "share_pct": 0.3
+            },
+            {
+              "key": "end_of_life",
+              "label": "End-of-life",
+              "carbon_kg": 0.00076,
+              "share_pct": 0.2
+            }
+          ]
+        },
+        "renewable_mix": {
+          "carbon_kg": 0.3867,
+          "energy_kwh": 1.751,
+          "water_l": 2.789,
+          "raw_material_kg": 0.03511,
+          "waste_kg": 0.003111,
+          "carbon_low_kg": 0.233,
+          "carbon_high_kg": 0.5403,
+          "uncertainty_pct": 40,
+          "stages": [
+            {
+              "key": "materials",
+              "label": "Raw materials",
+              "carbon_kg": 0.3733,
+              "share_pct": 96.6
+            },
+            {
+              "key": "manufacturing",
+              "label": "Manufacturing energy",
+              "carbon_kg": 0.000896,
+              "share_pct": 0.2
+            },
+            {
+              "key": "packaging",
+              "label": "Packaging",
+              "carbon_kg": 0.0104,
+              "share_pct": 2.7
+            },
+            {
+              "key": "transport",
+              "label": "Transportation",
+              "carbon_kg": 0.00128,
+              "share_pct": 0.3
+            },
+            {
+              "key": "end_of_life",
+              "label": "End-of-life",
+              "carbon_kg": 0.00076,
+              "share_pct": 0.2
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "recycled_aluminium",
+      "label": "Recycled aluminium",
+      "look": "aluminium",
+      "note": "Remelted scrap needs a small fraction of the energy of primary metal.",
+      "mass_g": 28,
+      "factor": 1.2,
+      "results": {
+        "grid_average": {
+          "carbon_kg": 0.06053,
+          "energy_kwh": 0.2819,
+          "water_l": 0.6733,
+          "raw_material_kg": 0.03511,
+          "waste_kg": 0.003111,
+          "carbon_low_kg": 0.03902,
+          "carbon_high_kg": 0.08203,
+          "uncertainty_pct": 35,
+          "stages": [
+            {
+              "key": "materials",
+              "label": "Raw materials",
+              "carbon_kg": 0.03733,
+              "share_pct": 61.7
+            },
+            {
+              "key": "manufacturing",
+              "label": "Manufacturing energy",
+              "carbon_kg": 0.01075,
+              "share_pct": 17.8
+            },
+            {
+              "key": "packaging",
+              "label": "Packaging",
+              "carbon_kg": 0.0104,
+              "share_pct": 17.2
+            },
+            {
+              "key": "transport",
+              "label": "Transportation",
+              "carbon_kg": 0.00128,
+              "share_pct": 2.1
+            },
+            {
+              "key": "end_of_life",
+              "label": "End-of-life",
+              "carbon_kg": 0.00076,
+              "share_pct": 1.3
+            }
+          ]
+        },
+        "renewable_mix": {
+          "carbon_kg": 0.05067,
+          "energy_kwh": 0.2819,
+          "water_l": 0.6733,
+          "raw_material_kg": 0.03511,
+          "waste_kg": 0.003111,
+          "carbon_low_kg": 0.0314,
+          "carbon_high_kg": 0.06993,
+          "uncertainty_pct": 40,
+          "stages": [
+            {
+              "key": "materials",
+              "label": "Raw materials",
+              "carbon_kg": 0.03733,
+              "share_pct": 73.7
+            },
+            {
+              "key": "manufacturing",
+              "label": "Manufacturing energy",
+              "carbon_kg": 0.000896,
+              "share_pct": 1.8
+            },
+            {
+              "key": "packaging",
+              "label": "Packaging",
+              "carbon_kg": 0.0104,
+              "share_pct": 20.5
+            },
+            {
+              "key": "transport",
+              "label": "Transportation",
+              "carbon_kg": 0.00128,
+              "share_pct": 2.5
+            },
+            {
+              "key": "end_of_life",
+              "label": "End-of-life",
+              "carbon_kg": 0.00076,
+              "share_pct": 1.5
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "materials": [
+    {
+      "id": "virgin_plastic",
+      "name": "Virgin plastic (PET)",
+      "family": "Polymer",
+      "emission_factor": 3.0,
+      "embodied_energy": 80,
+      "water": 60,
+      "durability": 3,
+      "notes": "Fossil feedstock. Lightweight and durable, but persistent if littered."
+    },
+    {
+      "id": "recycled_plastic",
+      "name": "Recycled plastic (rPET)",
+      "family": "Polymer",
+      "emission_factor": 1.2,
+      "embodied_energy": 30,
+      "water": 20,
+      "durability": 3,
+      "notes": "Benefit depends on collection, sorting and reprocessing energy."
+    },
+    {
+      "id": "aluminium",
+      "name": "Aluminium (primary)",
+      "family": "Metal",
+      "emission_factor": 12.0,
+      "embodied_energy": 190,
+      "water": 80,
+      "durability": 5,
+      "notes": "Very energy-intensive to smelt; highly recyclable with little quality loss."
+    },
+    {
+      "id": "recycled_aluminium",
+      "name": "Recycled aluminium",
+      "family": "Metal",
+      "emission_factor": 1.2,
+      "embodied_energy": 20,
+      "water": 12,
+      "durability": 5,
+      "notes": "Remelting needs a small fraction of the energy of primary smelting."
+    },
+    {
+      "id": "stainless_steel",
+      "name": "Stainless steel",
+      "family": "Metal",
+      "emission_factor": 6.0,
+      "embodied_energy": 60,
+      "water": 100,
+      "durability": 5,
+      "notes": "Alloying elements (chromium, nickel) drive much of the impact; very long service life."
+    },
+    {
+      "id": "mild_steel",
+      "name": "Mild steel",
+      "family": "Metal",
+      "emission_factor": 2.0,
+      "embodied_energy": 25,
+      "water": 40,
+      "durability": 4,
+      "notes": "Needs coating or paint for corrosion protection."
+    },
+    {
+      "id": "glass",
+      "name": "Glass",
+      "family": "Glass",
+      "emission_factor": 1.2,
+      "embodied_energy": 15,
+      "water": 15,
+      "durability": 3,
+      "notes": "Low impact per kg but heavy — products usually need far more mass than plastic equivalents."
+    },
+    {
+      "id": "cardboard",
+      "name": "Cardboard",
+      "family": "Paper & board",
+      "emission_factor": 0.9,
+      "embodied_energy": 18,
+      "water": 40,
+      "durability": 1,
+      "notes": "Renewable and widely recycled; loses strength when wet."
+    },
+    {
+      "id": "paper",
+      "name": "Paper",
+      "family": "Paper & board",
+      "emission_factor": 1.1,
+      "embodied_energy": 25,
+      "water": 60,
+      "durability": 1,
+      "notes": "Pulping is water- and energy-intensive."
+    },
+    {
+      "id": "recycled_paper",
+      "name": "Recycled paper",
+      "family": "Paper & board",
+      "emission_factor": 0.7,
+      "embodied_energy": 15,
+      "water": 20,
+      "durability": 1,
+      "notes": "Lower water and energy demand than virgin pulping."
+    },
+    {
+      "id": "cotton",
+      "name": "Cotton (conventional)",
+      "family": "Natural fibre",
+      "emission_factor": 5.0,
+      "embodied_energy": 55,
+      "water": 8000,
+      "durability": 3,
+      "notes": "Very water-intensive; fertiliser and pesticide use are significant."
+    },
+    {
+      "id": "organic_cotton",
+      "name": "Organic cotton",
+      "family": "Natural fibre",
+      "emission_factor": 4.0,
+      "embodied_energy": 50,
+      "water": 7000,
+      "durability": 3,
+      "notes": "No synthetic pesticides or fertilisers; typically lower yields."
+    },
+    {
+      "id": "bamboo",
+      "name": "Bamboo",
+      "family": "Wood & bamboo",
+      "emission_factor": 0.9,
+      "embodied_energy": 15,
+      "water": 500,
+      "durability": 3,
+      "notes": "Fast-growing; adhesives and long transport distances can offset benefits."
+    },
+    {
+      "id": "wood",
+      "name": "Wood",
+      "family": "Wood & bamboo",
+      "emission_factor": 0.5,
+      "embodied_energy": 10,
+      "water": 300,
+      "durability": 4,
+      "notes": "Low processing impact; depends on responsible forestry."
+    }
+  ],
+  "demo": {
+    "name": "Single-use plastic water bottle",
+    "quantity": 10000,
+    "carbon_per_unit_kg": 0.1071,
+    "uncertainty_pct": 30,
+    "data_quality": "Low (screening grade)",
+    "stages": [
+      {
+        "key": "materials",
+        "label": "Raw materials",
+        "original": 773.2,
+        "optimized": 309.3
+      },
+      {
+        "key": "manufacturing",
+        "label": "Manufacturing energy",
+        "original": 168.0,
+        "optimized": 9.996
+      },
+      {
+        "key": "packaging",
+        "label": "Packaging",
+        "original": 104.0,
+        "optimized": 83.2
+      },
+      {
+        "key": "transport",
+        "label": "Transportation",
+        "original": 11.6,
+        "optimized": 11.28
+      },
+      {
+        "key": "end_of_life",
+        "label": "End-of-life",
+        "original": 14.5,
+        "optimized": 14.1
+      }
+    ],
+    "metrics": [
+      {
+        "key": "carbon_kg",
+        "label": "Carbon footprint",
+        "unit": "kg CO2e",
+        "original": 1071.0,
+        "optimized": 427.9,
+        "change": -643.1,
+        "change_pct": -60.0,
+        "direction": "improved",
+        "basis": "estimated"
+      },
+      {
+        "key": "energy_kwh",
+        "label": "Energy consumption",
+        "unit": "kWh",
+        "original": 6944.0,
+        "optimized": 3091.0,
+        "change": -3853.0,
+        "change_pct": -55.5,
+        "direction": "improved",
+        "basis": "estimated"
+      },
+      {
+        "key": "water_l",
+        "label": "Water consumption",
+        "unit": "litres",
+        "original": 18460.0,
+        "optimized": 7755.0,
+        "change": -10700.0,
+        "change_pct": -58.0,
+        "direction": "improved",
+        "basis": "estimated"
+      },
+      {
+        "key": "raw_material_kg",
+        "label": "Material consumption",
+        "unit": "kg",
+        "original": 297.7,
+        "optimized": 289.7,
+        "change": -8.0,
+        "change_pct": -2.7,
+        "direction": "improved",
+        "basis": "estimated"
+      },
+      {
+        "key": "waste_kg",
+        "label": "Manufacturing waste",
+        "unit": "kg",
+        "original": 7.732,
+        "optimized": 7.732,
+        "change": 0.0,
+        "change_pct": 0.0,
+        "direction": "unchanged",
+        "basis": "estimated"
+      }
+    ],
+    "applied": 4,
+    "hotspot": "An estimated 72% of the carbon footprint comes from raw materials. Virgin plastic (PET) is the largest single contributor (72% of the total).",
+    "recommendations": [
+      {
+        "id": "material:virgin_plastic:recycled_plastic",
+        "title": "Replace Virgin plastic (PET) with Recycled plastic (rPET)",
+        "category": "Materials",
+        "verdict": "beneficial",
+        "significance": "clear",
+        "feasibility": "High",
+        "estimated_benefit": "Estimated: carbon about 43% lower, energy about 52% lower, water about 56% lower. Roughly 460 kg CO2e avoided across the batch.",
+        "trade_off": "Colour and clarity can be less consistent than virgin resin.",
+        "impact": {
+          "carbon_pct": -43.3,
+          "energy_pct": -51.6,
+          "water_pct": -55.8,
+          "material_pct": 0.0,
+          "waste_pct": 0.0
+        },
+        "applied": true
+      },
+      {
+        "id": "energy:renewable",
+        "title": "Source renewable electricity",
+        "category": "Manufacturing",
+        "verdict": "beneficial",
+        "significance": "clear",
+        "feasibility": "Medium",
+        "estimated_benefit": "Estimated: carbon about 14% lower. Roughly 150 kg CO2e avoided across the batch.",
+        "trade_off": "Certificates alone may not add new renewable capacity; quality of the contract matters.",
+        "impact": {
+          "carbon_pct": -14.4,
+          "energy_pct": 0.0,
+          "water_pct": 0.0,
+          "material_pct": 0.0,
+          "waste_pct": 0.0
+        },
+        "applied": true
+      },
+      {
+        "id": "energy:efficiency",
+        "title": "Improve manufacturing energy efficiency",
+        "category": "Manufacturing",
+        "verdict": "beneficial",
+        "significance": "marginal",
+        "feasibility": "Medium",
+        "estimated_benefit": "Estimated: carbon about 4% lower, energy about 1% lower. Roughly 48 kg CO2e avoided across the batch. This is small next to the factor uncertainty (about ±30%), so treat it as a direction rather than a confirmed saving.",
+        "trade_off": "The reduction is an illustrative target, not a measured saving.",
+        "impact": {
+          "carbon_pct": -4.5,
+          "energy_pct": -1.4,
+          "water_pct": 0.0,
+          "material_pct": 0.0,
+          "waste_pct": 0.0
+        },
+        "applied": true
+      },
+      {
+        "id": "packaging:lightweight",
+        "title": "Lightweight the packaging by 20%",
+        "category": "Packaging",
+        "verdict": "beneficial",
+        "significance": "marginal",
+        "feasibility": "Medium",
+        "estimated_benefit": "Estimated: carbon about 2% lower, energy about 2% lower, water about 2% lower, material use about 3% lower. Roughly 21 kg CO2e avoided across the batch. This is small next to the factor uncertainty (about ±30%), so treat it as a direction rather than a confirmed saving.",
+        "trade_off": "Less packaging can increase product damage in transit; damaged goods usually outweigh the packaging saving.",
+        "impact": {
+          "carbon_pct": -2.0,
+          "energy_pct": -2.5,
+          "water_pct": -2.2,
+          "material_pct": -2.7,
+          "waste_pct": 0.0
+        },
+        "applied": true
+      },
+      {
+        "id": "packaging:conventional_plastic:recycled_cardboard",
+        "title": "Switch packaging to recycled cardboard",
+        "category": "Packaging",
+        "verdict": "mixed",
+        "significance": "clear",
+        "feasibility": "Medium",
+        "estimated_benefit": "Estimated: energy about 9% lower, water about 2% lower.",
+        "trade_off": "Recalculation shows the carbon footprint rising by about 2% for this product.",
+        "impact": {
+          "carbon_pct": 2.2,
+          "energy_pct": -8.6,
+          "water_pct": -2.2,
+          "material_pct": 13.4,
+          "waste_pct": 0.0
+        },
+        "applied": false
+      },
+      {
+        "id": "packaging:reusable",
+        "title": "Consider reusable transit packaging",
+        "category": "Packaging",
+        "verdict": "advisory",
+        "significance": "not_quantified",
+        "feasibility": "Low",
+        "estimated_benefit": "Not quantified — this changes the product design or business model, so it cannot be recalculated from the current specification.",
+        "trade_off": "Return transport and washing add impacts; benefit depends on the number of reuse cycles actually achieved.",
+        "impact": null,
+        "applied": false
+      },
+      {
+        "id": "eol:recycling",
+        "title": "Design and label the product for recycling",
+        "category": "End-of-life",
+        "verdict": "advisory",
+        "significance": "not_quantified",
+        "feasibility": "Medium",
+        "estimated_benefit": "Not visible in the carbon estimate, because recycling earns no credit under the cut-off approach. The benefit is material recovery: roughly 210 kg across the batch could return to use instead of being discarded.",
+        "trade_off": "Real recycling rates depend on consumer behaviour and local facilities.",
+        "impact": null,
+        "applied": false
+      },
+      {
+        "id": "design:reusable",
+        "title": "Evaluate a reusable product design",
+        "category": "Design",
+        "verdict": "advisory",
+        "significance": "not_quantified",
+        "feasibility": "Low",
+        "estimated_benefit": "Not quantified — this changes the product design or business model, so it cannot be recalculated from the current specification.",
+        "trade_off": "A reusable item has a higher footprint per unit and only wins after enough uses — the break-even count must be assessed separately.",
+        "impact": null,
+        "applied": false
+      }
+    ]
+  }
+}

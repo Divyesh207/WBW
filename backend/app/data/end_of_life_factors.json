@@ -1,0 +1,32 @@
+{
+  "meta": {
+    "title": "Illustrative end-of-life factors",
+    "status": "ILLUSTRATIVE — prototype screening values, not certified LCA data",
+    "note": "Emissions from treating 1 kg of discarded material. Recycling uses the cut-off approach: only collection and sorting are counted and NO credit is given for avoided virgin production, because the benefit of recycled content is already counted when a product uses recycled material. This prevents double-counting. Incineration counts fossil carbon only; no energy-recovery credit is given.",
+    "units": { "factor": "kg CO2e per kg of material treated" }
+  },
+  "recyclability_levels": {
+    "high": { "label": "High", "fraction": 0.85 },
+    "medium": { "label": "Medium", "fraction": 0.5 },
+    "low": { "label": "Low", "fraction": 0.2 },
+    "none": { "label": "Not recyclable", "fraction": 0.0 }
+  },
+  "disposal_methods": {
+    "recycling": "Recycling",
+    "landfill": "Landfill",
+    "incineration": "Incineration",
+    "composting": "Composting"
+  },
+  "compostable_families": ["paper", "natural_fibre", "wood"],
+  "uncertainty_pct": 50,
+  "factors": {
+    "polymer": { "landfill": 0.05, "incineration": 2.4, "recycling": 0.05, "composting": 0.05 },
+    "metal": { "landfill": 0.02, "incineration": 0.02, "recycling": 0.03, "composting": 0.02 },
+    "glass": { "landfill": 0.02, "incineration": 0.02, "recycling": 0.03, "composting": 0.02 },
+    "paper": { "landfill": 1.0, "incineration": 0.05, "recycling": 0.03, "composting": 0.1 },
+    "natural_fibre": { "landfill": 0.6, "incineration": 0.05, "recycling": 0.03, "composting": 0.1 },
+    "wood": { "landfill": 0.5, "incineration": 0.05, "recycling": 0.03, "composting": 0.1 },
+    "none": { "landfill": 0, "incineration": 0, "recycling": 0, "composting": 0 }
+  },
+  "basis": "Illustrative; landfill values for bio-based materials reflect partial methane generation, incineration of polymers reflects fossil carbon content."
+}

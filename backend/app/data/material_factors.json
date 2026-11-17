@@ -1,0 +1,279 @@
+{
+  "meta": {
+    "title": "Illustrative material impact factors",
+    "status": "ILLUSTRATIVE — prototype screening values, not certified LCA data",
+    "boundary": "Cradle-to-gate production of 1 kg of material (extraction to finished raw material).",
+    "note": "Values are rounded, order-of-magnitude figures chosen to sit inside ranges commonly reported in public literature (e.g. ICE Database, Plastics Europe eco-profiles, World Steel, International Aluminium Institute, Textile Exchange). They vary strongly by region, supplier and production route. Replace this file with a licensed LCA database for real decisions.",
+    "units": {
+      "emission_factor": "kg CO2e per kg material",
+      "embodied_energy": "MJ per kg material",
+      "water": "litres per kg material"
+    }
+  },
+  "families": {
+    "polymer": "Polymer",
+    "metal": "Metal",
+    "glass": "Glass",
+    "paper": "Paper & board",
+    "natural_fibre": "Natural fibre",
+    "wood": "Wood & bamboo"
+  },
+  "materials": [
+    {
+      "id": "virgin_plastic",
+      "name": "Virgin plastic (PET)",
+      "family": "polymer",
+      "emission_factor": 3.0,
+      "embodied_energy": 80,
+      "water": 60,
+      "recycled_content": 0,
+      "renewable": false,
+      "durability": 3,
+      "uncertainty_pct": 30,
+      "basis": "Illustrative; within the range commonly reported for fossil-based PET/PP resin production.",
+      "notes": "Fossil feedstock. Lightweight and durable, but persistent if littered.",
+      "alternatives": [
+        {
+          "to": "recycled_plastic",
+          "cost": "Recycled resin is often priced at a small premium (or discount) to virgin depending on the market; food-grade recycled PET usually carries a premium.",
+          "feasibility": "High",
+          "feasibility_note": "Drop-in replacement on most existing moulding equipment; supply of food-grade grades can be limited.",
+          "trade_offs": [
+            "Colour and clarity can be less consistent than virgin resin.",
+            "Food-contact applications need certified recycled grades.",
+            "Assumes a 1:1 mass substitution; some designs need slightly more material."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "recycled_plastic",
+      "name": "Recycled plastic (rPET)",
+      "family": "polymer",
+      "emission_factor": 1.2,
+      "embodied_energy": 30,
+      "water": 20,
+      "recycled_content": 1,
+      "renewable": false,
+      "durability": 3,
+      "uncertainty_pct": 40,
+      "basis": "Illustrative; mechanical recycling with the cut-off approach (no burden from the first life).",
+      "notes": "Benefit depends on collection, sorting and reprocessing energy.",
+      "alternatives": []
+    },
+    {
+      "id": "aluminium",
+      "name": "Aluminium (primary)",
+      "family": "metal",
+      "emission_factor": 12.0,
+      "embodied_energy": 190,
+      "water": 80,
+      "recycled_content": 0,
+      "renewable": false,
+      "durability": 5,
+      "uncertainty_pct": 40,
+      "basis": "Illustrative; primary aluminium ranges widely (roughly 4–20 kg CO2e/kg) depending on smelter electricity.",
+      "notes": "Very energy-intensive to smelt; highly recyclable with little quality loss.",
+      "alternatives": [
+        {
+          "to": "recycled_aluminium",
+          "cost": "Secondary aluminium is typically cost-competitive with primary; alloy availability can affect price.",
+          "feasibility": "High",
+          "feasibility_note": "Widely available for cast and many wrought alloys.",
+          "trade_offs": [
+            "Some high-purity or aerospace alloys limit recycled content.",
+            "Scrap supply is finite — high recycled content in one product can displace it elsewhere."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "recycled_aluminium",
+      "name": "Recycled aluminium",
+      "family": "metal",
+      "emission_factor": 1.2,
+      "embodied_energy": 20,
+      "water": 12,
+      "recycled_content": 1,
+      "renewable": false,
+      "durability": 5,
+      "uncertainty_pct": 40,
+      "basis": "Illustrative; remelting scrap with the cut-off approach.",
+      "notes": "Remelting needs a small fraction of the energy of primary smelting.",
+      "alternatives": []
+    },
+    {
+      "id": "stainless_steel",
+      "name": "Stainless steel",
+      "family": "metal",
+      "emission_factor": 6.0,
+      "embodied_energy": 60,
+      "water": 100,
+      "recycled_content": 0.5,
+      "renewable": false,
+      "durability": 5,
+      "uncertainty_pct": 35,
+      "basis": "Illustrative; typical mixed-route stainless with moderate scrap content.",
+      "notes": "Alloying elements (chromium, nickel) drive much of the impact; very long service life.",
+      "alternatives": []
+    },
+    {
+      "id": "mild_steel",
+      "name": "Mild steel",
+      "family": "metal",
+      "emission_factor": 2.0,
+      "embodied_energy": 25,
+      "water": 40,
+      "recycled_content": 0.3,
+      "renewable": false,
+      "durability": 4,
+      "uncertainty_pct": 30,
+      "basis": "Illustrative; global average mix of blast-furnace and electric-arc routes.",
+      "notes": "Needs coating or paint for corrosion protection.",
+      "alternatives": []
+    },
+    {
+      "id": "glass",
+      "name": "Glass",
+      "family": "glass",
+      "emission_factor": 1.2,
+      "embodied_energy": 15,
+      "water": 15,
+      "recycled_content": 0.3,
+      "renewable": false,
+      "durability": 3,
+      "uncertainty_pct": 30,
+      "basis": "Illustrative; container glass with typical cullet content.",
+      "notes": "Low impact per kg but heavy — products usually need far more mass than plastic equivalents.",
+      "alternatives": []
+    },
+    {
+      "id": "cardboard",
+      "name": "Cardboard",
+      "family": "paper",
+      "emission_factor": 0.9,
+      "embodied_energy": 18,
+      "water": 40,
+      "recycled_content": 0.5,
+      "renewable": true,
+      "durability": 1,
+      "uncertainty_pct": 35,
+      "basis": "Illustrative; corrugated board with mixed virgin and recycled fibre. Biogenic carbon excluded.",
+      "notes": "Renewable and widely recycled; loses strength when wet.",
+      "alternatives": []
+    },
+    {
+      "id": "paper",
+      "name": "Paper",
+      "family": "paper",
+      "emission_factor": 1.1,
+      "embodied_energy": 25,
+      "water": 60,
+      "recycled_content": 0,
+      "renewable": true,
+      "durability": 1,
+      "uncertainty_pct": 35,
+      "basis": "Illustrative; virgin-fibre paper. Biogenic carbon excluded.",
+      "notes": "Pulping is water- and energy-intensive.",
+      "alternatives": [
+        {
+          "to": "recycled_paper",
+          "cost": "Usually cost-neutral to slightly cheaper than virgin paper.",
+          "feasibility": "High",
+          "feasibility_note": "Widely available in most grades.",
+          "trade_offs": [
+            "Slightly lower brightness and fibre strength.",
+            "Fibres can only be recycled a limited number of times, so some virgin input to the overall system is always needed."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "recycled_paper",
+      "name": "Recycled paper",
+      "family": "paper",
+      "emission_factor": 0.7,
+      "embodied_energy": 15,
+      "water": 20,
+      "recycled_content": 1,
+      "renewable": true,
+      "durability": 1,
+      "uncertainty_pct": 40,
+      "basis": "Illustrative; recovered-fibre paper with the cut-off approach.",
+      "notes": "Lower water and energy demand than virgin pulping.",
+      "alternatives": []
+    },
+    {
+      "id": "cotton",
+      "name": "Cotton (conventional)",
+      "family": "natural_fibre",
+      "emission_factor": 5.0,
+      "embodied_energy": 55,
+      "water": 8000,
+      "recycled_content": 0,
+      "renewable": true,
+      "durability": 3,
+      "uncertainty_pct": 50,
+      "basis": "Illustrative; fibre cultivation and ginning. Water use varies by an order of magnitude with irrigation practice and region.",
+      "notes": "Very water-intensive; fertiliser and pesticide use are significant.",
+      "alternatives": [
+        {
+          "to": "organic_cotton",
+          "cost": "Organic fibre typically carries a noticeable price premium.",
+          "feasibility": "Medium",
+          "feasibility_note": "Certified supply is limited and needs chain-of-custody documentation.",
+          "trade_offs": [
+            "Lower yields per hectare can mean more land is needed for the same fibre.",
+            "Published water and carbon savings are contested and depend heavily on region and irrigation.",
+            "Dyeing and finishing impacts are unchanged."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "organic_cotton",
+      "name": "Organic cotton",
+      "family": "natural_fibre",
+      "emission_factor": 4.0,
+      "embodied_energy": 50,
+      "water": 7000,
+      "recycled_content": 0,
+      "renewable": true,
+      "durability": 3,
+      "uncertainty_pct": 60,
+      "basis": "Illustrative and deliberately conservative; the size of any saving over conventional cotton is debated in the literature.",
+      "notes": "No synthetic pesticides or fertilisers; typically lower yields.",
+      "alternatives": []
+    },
+    {
+      "id": "bamboo",
+      "name": "Bamboo",
+      "family": "wood",
+      "emission_factor": 0.9,
+      "embodied_energy": 15,
+      "water": 500,
+      "recycled_content": 0,
+      "renewable": true,
+      "durability": 3,
+      "uncertainty_pct": 50,
+      "basis": "Illustrative; engineered/laminated bamboo. Biogenic carbon storage excluded.",
+      "notes": "Fast-growing; adhesives and long transport distances can offset benefits.",
+      "alternatives": []
+    },
+    {
+      "id": "wood",
+      "name": "Wood",
+      "family": "wood",
+      "emission_factor": 0.5,
+      "embodied_energy": 10,
+      "water": 300,
+      "recycled_content": 0,
+      "renewable": true,
+      "durability": 4,
+      "uncertainty_pct": 45,
+      "basis": "Illustrative; kiln-dried sawn timber. Biogenic carbon storage excluded.",
+      "notes": "Low processing impact; depends on responsible forestry.",
+      "alternatives": []
+    }
+  ]
+}

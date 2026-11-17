@@ -1,0 +1,14 @@
+{
+  "meta": {
+    "title": "Illustrative freight transport factors",
+    "status": "ILLUSTRATIVE — prototype screening values, not certified LCA data",
+    "note": "Rounded figures in the range of published freight factors (e.g. GLEC Framework, UK government conversion factors). Real values depend on vehicle type, load factor and fuel.",
+    "units": { "emission_factor": "kg CO2e per tonne-kilometre" }
+  },
+  "modes": [
+    { "id": "road", "name": "Road (truck)", "emission_factor": 0.10, "uncertainty_pct": 30, "basis": "Illustrative; average heavy goods vehicle.", "alternative": { "to": "rail", "min_distance_km": 800 } },
+    { "id": "rail", "name": "Rail freight", "emission_factor": 0.025, "uncertainty_pct": 35, "basis": "Illustrative; mixed diesel/electric rail freight.", "alternative": null },
+    { "id": "sea", "name": "Sea freight", "emission_factor": 0.012, "uncertainty_pct": 40, "basis": "Illustrative; container ship, deep-sea.", "alternative": null },
+    { "id": "air", "name": "Air freight", "emission_factor": 0.60, "uncertainty_pct": 35, "basis": "Illustrative; long-haul air cargo.", "alternative": { "to": "sea", "min_distance_km": 0 } }
+  ]
+}

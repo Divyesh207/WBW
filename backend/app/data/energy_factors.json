@@ -1,0 +1,172 @@
+{
+  "meta": {
+    "title": "Illustrative electricity and manufacturing-process factors",
+    "status": "MIXED — technology-specific electricity factors are published IPCC AR5 medians; grid average, diesel, renewable mix and all process benchmarks are illustrative",
+    "note": "Published entries reproduce the IPCC AR5 WGIII Annex III lifecycle medians for one generation technology; they are not grid mixes and not location-specific. Process benchmarks are indicative specific-energy and scrap-rate figures used only to flag unusually high inputs; they are never added to the footprint.",
+    "units": {
+      "emission_factor": "kg CO2e per kWh of electricity",
+      "typical_energy": "kWh per kg of finished product",
+      "typical_waste_pct": "% of input material lost as scrap"
+    }
+  },
+  "energy_sources": [
+    {
+      "id": "grid_average",
+      "name": "Grid electricity (average mix)",
+      "emission_factor": 0.48,
+      "renewable": false,
+      "uncertainty_pct": 25,
+      "source_type": "illustrative",
+      "basis": "Illustrative; rounded figure near recent world-average grid intensity. Real grids range from under 0.05 to over 0.8 kg CO2e/kWh."
+    },
+    {
+      "id": "coal_grid",
+      "name": "Coal-fired electricity",
+      "emission_factor": 0.82,
+      "renewable": false,
+      "uncertainty_pct": 10,
+      "source_type": "published",
+      "basis": "IPCC AR5 WGIII (2014), Annex III, Table A.III.2 — lifecycle emissions median for pulverised coal (820 g CO2e/kWh; range 740-910)."
+    },
+    {
+      "id": "natural_gas",
+      "name": "Natural gas electricity",
+      "emission_factor": 0.49,
+      "renewable": false,
+      "uncertainty_pct": 25,
+      "source_type": "published",
+      "basis": "IPCC AR5 WGIII (2014), Annex III, Table A.III.2 — lifecycle emissions median for gas combined cycle (490 g CO2e/kWh; range 410-650)."
+    },
+    {
+      "id": "diesel_generator",
+      "name": "Diesel generator",
+      "emission_factor": 0.75,
+      "renewable": false,
+      "uncertainty_pct": 25,
+      "source_type": "illustrative",
+      "basis": "Illustrative; small on-site diesel generation."
+    },
+    {
+      "id": "renewable_mix",
+      "name": "Renewable electricity (mixed)",
+      "emission_factor": 0.04,
+      "renewable": true,
+      "uncertainty_pct": 50,
+      "source_type": "illustrative",
+      "basis": "Illustrative blend; sits inside the IPCC AR5 lifecycle medians for wind (11), hydro (24) and solar PV (41-48 g CO2e/kWh)."
+    },
+    {
+      "id": "solar_pv",
+      "name": "On-site solar PV",
+      "emission_factor": 0.041,
+      "renewable": true,
+      "uncertainty_pct": 40,
+      "source_type": "published",
+      "basis": "IPCC AR5 WGIII (2014), Annex III, Table A.III.2 — lifecycle emissions median for rooftop solar PV (41 g CO2e/kWh; range 26-60)."
+    },
+    {
+      "id": "wind",
+      "name": "Wind power",
+      "emission_factor": 0.011,
+      "renewable": true,
+      "uncertainty_pct": 60,
+      "source_type": "published",
+      "basis": "IPCC AR5 WGIII (2014), Annex III, Table A.III.2 — lifecycle emissions median for onshore wind (11 g CO2e/kWh; range 7-56)."
+    },
+    {
+      "id": "hydro",
+      "name": "Hydropower",
+      "emission_factor": 0.024,
+      "renewable": true,
+      "uncertainty_pct": 60,
+      "source_type": "published",
+      "basis": "IPCC AR5 WGIII (2014), Annex III, Table A.III.2 — lifecycle emissions median for hydropower (24 g CO2e/kWh; highly site-dependent, range 1-2200)."
+    }
+  ],
+  "manufacturing_methods": [
+    {
+      "id": "injection_moulding",
+      "name": "Injection moulding",
+      "typical_energy": 1.5,
+      "typical_waste_pct": 3
+    },
+    {
+      "id": "blow_moulding",
+      "name": "Blow moulding",
+      "typical_energy": 1.0,
+      "typical_waste_pct": 3
+    },
+    {
+      "id": "extrusion",
+      "name": "Extrusion",
+      "typical_energy": 0.6,
+      "typical_waste_pct": 3
+    },
+    {
+      "id": "casting",
+      "name": "Metal casting",
+      "typical_energy": 2.5,
+      "typical_waste_pct": 8
+    },
+    {
+      "id": "cnc_machining",
+      "name": "CNC machining",
+      "typical_energy": 3.0,
+      "typical_waste_pct": 25
+    },
+    {
+      "id": "stamping",
+      "name": "Stamping & forming",
+      "typical_energy": 0.8,
+      "typical_waste_pct": 10
+    },
+    {
+      "id": "glass_forming",
+      "name": "Glass forming",
+      "typical_energy": 2.2,
+      "typical_waste_pct": 5
+    },
+    {
+      "id": "paper_converting",
+      "name": "Paper converting & die-cutting",
+      "typical_energy": 0.4,
+      "typical_waste_pct": 10
+    },
+    {
+      "id": "textile_processing",
+      "name": "Spinning, weaving & finishing",
+      "typical_energy": 6.0,
+      "typical_waste_pct": 10
+    },
+    {
+      "id": "cut_and_sew",
+      "name": "Cut and sew",
+      "typical_energy": 0.8,
+      "typical_waste_pct": 15
+    },
+    {
+      "id": "woodworking",
+      "name": "Woodworking & joinery",
+      "typical_energy": 0.7,
+      "typical_waste_pct": 20
+    },
+    {
+      "id": "additive",
+      "name": "3D printing (additive)",
+      "typical_energy": 5.0,
+      "typical_waste_pct": 5
+    },
+    {
+      "id": "assembly",
+      "name": "Assembly only",
+      "typical_energy": 0.3,
+      "typical_waste_pct": 2
+    },
+    {
+      "id": "other",
+      "name": "Other / mixed processes",
+      "typical_energy": 1.5,
+      "typical_waste_pct": 10
+    }
+  ]
+}

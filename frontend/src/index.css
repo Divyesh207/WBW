@@ -1,0 +1,32 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html { scroll-behavior: smooth; }
+  body {
+    @apply bg-brand-paper font-sans text-brand-ink antialiased;
+    font-feature-settings: "cv11", "ss01";
+  }
+  h1, h2, h3 { @apply font-display; }
+  :focus-visible { @apply outline-none ring-2 ring-brand-emerald ring-offset-2 ring-offset-brand-paper; }
+  ::selection { background: #d9f99d; }
+  .tabular { font-variant-numeric: tabular-nums; }
+}
+
+@layer components {
+  .eyebrow { @apply text-xs font-medium uppercase tracking-[0.18em] text-brand-green; }
+  .input {
+    @apply block w-full rounded-md border border-brand-line bg-white px-3 py-2 text-sm text-brand-ink
+      placeholder:text-brand-muted/60 focus:border-brand-green focus:outline-none focus:ring-1 focus:ring-brand-green
+      disabled:bg-brand-paper disabled:text-brand-muted;
+  }
+  .input-error { @apply border-red-500 focus:border-red-500 focus:ring-red-500; }
+}
+
+@media print {
+  @page { size: A4; margin: 14mm; }
+  body { background: #fff; }
+  .no-print { display: none !important; }
+  .print-break-avoid { break-inside: avoid; }
+}
