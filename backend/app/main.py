@@ -9,9 +9,11 @@ from fastapi.exceptions import RequestValidationError
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse, RedirectResponse
 
+from app.api.marketplace_routes import auth_router, market_router
 from app.api.routes import router
 from app.database import SessionLocal, init_db
 from app.services.assessment_service import refresh_outdated, seed_demo
+from app.services.marketplace_seed import seed_marketplace
 
 
 @asynccontextmanager
@@ -22,6 +24,7 @@ async def lifespan(_: FastAPI):
     if os.getenv("WBW_SEED_DEMO", "1") != "0":
         with SessionLocal() as db:
             seed_demo(db)
+            seed_marketplace(db)
     yield
 
 
@@ -46,7 +49,7 @@ app.add_middleware(
     CORSMiddleware,
     allow_origins=os.getenv("WBW_CORS_ORIGINS", "http://localhost:5173,http://127.0.0.1:5173").split(","),
     allow_methods=["*"],
-    allow_headers=["*"],
+    allow_headers=["*", "Authorization"],
     expose_headers=["Content-Disposition"],
 )
 
@@ -64,3 +67,5 @@ async def validation_handler(_: Request, exc: RequestValidationError):
 
 
 app.include_router(router)
+app.include_router(auth_router)
+app.include_router(market_router)

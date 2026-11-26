@@ -4,6 +4,7 @@ import { LoadingScreen } from "./components/LoadingScreen";
 import { ToastProvider } from "./components/Toast";
 import { ButtonLink } from "./components/ui";
 import { BrandLogo } from "./components/brand/BrandLogo";
+import { AuthProvider } from "./hooks/useAuth";
 import Landing from "./pages/Landing";
 import SignIn from "./pages/SignIn";
 
@@ -18,6 +19,18 @@ const Overview = lazy(() => import("./pages/Overview"));
 const Reports = lazy(() => import("./pages/Reports"));
 const ReportView = lazy(() => import("./pages/ReportView"));
 const Settings = lazy(() => import("./pages/Settings"));
+// Supplier Marketplace
+const Browse = lazy(() => import("./pages/market/Browse"));
+const ListingDetail = lazy(() => import("./pages/market/ListingDetail"));
+const CompareListings = lazy(() => import("./pages/market/CompareListings"));
+const Requests = lazy(() => import("./pages/market/Requests"));
+const Orders = lazy(() => import("./pages/market/Orders"));
+const OrderDetail = lazy(() => import("./pages/market/OrderDetail"));
+const MarketDashboard = lazy(() => import("./pages/market/Dashboards").then((m) => ({ default: m.MarketDashboard })));
+const SupplierDashboard = lazy(() => import("./pages/market/Dashboards").then((m) => ({ default: m.SupplierDashboard })));
+const SupplierListings = lazy(() => import("./pages/market/SupplierListings"));
+const SupplierProfileEdit = lazy(() => import("./pages/market/SupplierProfile"));
+const SupplierPublic = lazy(() => import("./pages/market/SupplierProfile").then((m) => ({ default: m.SupplierPublic })));
 
 function ScrollToTop() {
   const { pathname } = useLocation();
@@ -43,6 +56,7 @@ function NotFound() {
 export default function App() {
   return (
     <BrowserRouter future={{ v7_startTransition: true, v7_relativeSplatPath: true }}>
+      <AuthProvider>
       <ToastProvider>
         <ScrollToTop />
         <Suspense fallback={<LoadingScreen />}>
@@ -59,11 +73,26 @@ export default function App() {
             <Route path="reports" element={<Reports />} />
             <Route path="reports/:id" element={<ReportView />} />
             <Route path="settings" element={<Settings />} />
+            <Route path="market" element={<MarketDashboard />} />
+            <Route path="market/browse" element={<Browse />} />
+            <Route path="market/compare" element={<CompareListings />} />
+            <Route path="market/listings/:id" element={<ListingDetail />} />
+            <Route path="market/suppliers/:id" element={<SupplierPublic />} />
+            <Route path="market/requests" element={<Requests role="manufacturer" />} />
+            <Route path="market/orders" element={<Orders role="manufacturer" />} />
+            <Route path="market/orders/:id" element={<OrderDetail role="manufacturer" />} />
+            <Route path="supplier" element={<SupplierDashboard />} />
+            <Route path="supplier/listings" element={<SupplierListings />} />
+            <Route path="supplier/requests" element={<Requests role="supplier" />} />
+            <Route path="supplier/orders" element={<Orders role="supplier" />} />
+            <Route path="supplier/orders/:id" element={<OrderDetail role="supplier" />} />
+            <Route path="supplier/profile" element={<SupplierProfileEdit />} />
           </Route>
           <Route path="*" element={<NotFound />} />
         </Routes>
         </Suspense>
       </ToastProvider>
+      </AuthProvider>
     </BrowserRouter>
   );
 }

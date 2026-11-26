@@ -5,12 +5,19 @@ import {
   FileText,
   FlaskConical,
   GitCompareArrows,
+  Inbox,
   LayoutDashboard,
   ListChecks,
+  LogIn,
   LogOut,
   Menu,
+  Package,
   PlusCircle,
+  Search,
   Settings as SettingsIcon,
+  Store,
+  Truck,
+  UserRound,
   X,
 } from "lucide-react";
 import { BrandIcon } from "../components/brand/BrandIcon";
@@ -18,12 +25,15 @@ import { BrandLogo } from "../components/brand/BrandLogo";
 import { LoadingScreen } from "../components/LoadingScreen";
 import { Button, ButtonLink } from "../components/ui";
 import { useAsync } from "../hooks/useAsync";
+import { useAuth } from "../hooks/useAuth";
 import { ReferenceProvider } from "../hooks/useReference";
 import { api } from "../services/api";
 import { cx } from "../utils/format";
 import { useProfile } from "../utils/profile";
 
-const NAV = [
+type NavItem = { to: string; label: string; icon: typeof LayoutDashboard; end?: boolean };
+
+const NAV: NavItem[] = [
   { to: "/app", label: "Overview", icon: LayoutDashboard, end: true },
   { to: "/app/new", label: "New Assessment", icon: PlusCircle },
   { to: "/app/assessments", label: "My Assessments", icon: ListChecks },
@@ -33,43 +43,89 @@ const NAV = [
   { to: "/app/settings", label: "Settings", icon: SettingsIcon },
 ];
 
-function Sidebar({ onNavigate }: { onNavigate?: () => void }) {
-  const [profile] = useProfile();
-  const initials = profile.name.split(/\s+/).map((p) => p[0]).slice(0, 2).join("").toUpperCase();
+const MARKET_NAV: Record<"manufacturer" | "supplier" | "guest", NavItem[]> = {
+  manufacturer: [
+    { to: "/app/market", label: "Marketplace", icon: Store, end: true },
+    { to: "/app/market/browse", label: "Browse Materials", icon: Search },
+    { to: "/app/market/requests", label: "My Requests", icon: Inbox },
+    { to: "/app/market/orders", label: "My Orders", icon: Truck },
+  ],
+  supplier: [
+    { to: "/app/supplier", label: "Supplier Dashboard", icon: Store, end: true },
+    { to: "/app/supplier/listings", label: "My Listings", icon: Package },
+    { to: "/app/supplier/requests", label: "Incoming Requests", icon: Inbox },
+    { to: "/app/supplier/orders", label: "Customer Orders", icon: Truck },
+    { to: "/app/supplier/profile", label: "Company Profile", icon: UserRound },
+  ],
+  guest: [{ to: "/app/market/browse", label: "Browse Materials", icon: Search }],
+};
+
+export function useNavItems() {
+  const { user } = useAuth();
+  return { assessment: NAV, market: MARKET_NAV[user?.role ?? "guest"] };
+}
+
+function NavGroup({ title, items, onNavigate }: { title: string; items: NavItem[]; onNavigate?: () => void }) {
   return (
-    <div className="flex h-full flex-col bg-brand-dark text-brand-paper">
-      <NavLink to="/" className="flex h-16 items-center px-5" aria-label="Waste Before Waste home" onClick={onNavigate}>
-        <BrandLogo theme="dark" size={30} />
-      </NavLink>
-      <nav className="flex-1 space-y-0.5 overflow-y-auto px-3 py-4" aria-label="Application">
-        {NAV.map(({ to, label, icon: Icon, end }) => (
+    <div>
+      <p className="px-3 pb-1.5 pt-4 text-[11px] font-medium uppercase tracking-[0.14em] text-brand-paper/45 first:pt-0">{title}</p>
+      <div className="space-y-0.5">
+        {items.map(({ to, label, icon: Icon, end }) => (
           <NavLink
             key={to}
             to={to}
             end={end}
             onClick={onNavigate}
             className={({ isActive }) =>
-              cx(
-                "flex items-center gap-3 rounded-md px-3 py-2 text-sm transition-colors",
-                isActive ? "bg-white/10 font-medium text-white" : "text-brand-paper/70 hover:bg-white/5 hover:text-white",
-              )
+              cx("flex items-center gap-3 rounded-md px-3 py-2 text-sm transition-colors", isActive ? "bg-white/10 font-medium text-white" : "text-brand-paper/70 hover:bg-white/5 hover:text-white")
             }
           >
             <Icon className="h-4 w-4 shrink-0" aria-hidden />
             {label}
           </NavLink>
         ))}
+      </div>
+    </div>
+  );
+}
+
+function Sidebar({ onNavigate }: { onNavigate?: () => void }) {
+  const [profile] = useProfile();
+  const { user, logout } = useAuth();
+  const { assessment, market } = useNavItems();
+  const name = user?.name ?? profile.name;
+  const initials = name.split(/\s+/).map((p) => p[0]).slice(0, 2).join("").toUpperCase();
+  return (
+    <div className="flex h-full flex-col bg-brand-dark text-brand-paper">
+      <NavLink to="/" className="flex h-16 items-center px-5" aria-label="Waste Before Waste home" onClick={onNavigate}>
+        <BrandLogo theme="dark" size={30} />
+      </NavLink>
+      <nav className="flex-1 overflow-y-auto px-3 py-4" aria-label="Application">
+        <NavGroup title="Environmental assessment" items={assessment} onNavigate={onNavigate} />
+        <NavGroup title={user?.role === "supplier" ? "Supplier marketplace" : "Supplier marketplace"} items={market} onNavigate={onNavigate} />
+        {!user && (
+          <NavLink to="/signin" onClick={onNavigate} className="mt-0.5 flex items-center gap-3 rounded-md px-3 py-2 text-sm text-brand-lime hover:bg-white/5">
+            <LogIn className="h-4 w-4 shrink-0" aria-hidden />
+            Sign in to request & sell
+          </NavLink>
+        )}
       </nav>
       <div className="border-t border-white/10 p-3">
         <div className="flex items-center gap-3 rounded-md px-2 py-2">
           <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-brand-lime text-xs font-semibold text-brand-dark">{initials || "DU"}</span>
           <div className="min-w-0 flex-1">
-            <p className="truncate text-sm font-medium text-white">{profile.name}</p>
-            <p className="truncate text-xs text-brand-paper/60">{profile.organisation}</p>
+            <p className="truncate text-sm font-medium text-white">{name}</p>
+            <p className="truncate text-xs text-brand-paper/60">{user ? `${user.role === "supplier" ? "Supplier" : "Manufacturer"} · ${user.organisation}` : "Guest · not signed in"}</p>
           </div>
-          <NavLink to="/" title="Exit to website" aria-label="Exit to website" className="text-brand-paper/60 hover:text-white">
-            <LogOut className="h-4 w-4" />
-          </NavLink>
+          {user ? (
+            <button type="button" onClick={() => logout()} title="Sign out" aria-label="Sign out" className="text-brand-paper/60 hover:text-white">
+              <LogOut className="h-4 w-4" />
+            </button>
+          ) : (
+            <NavLink to="/" title="Exit to website" aria-label="Exit to website" className="text-brand-paper/60 hover:text-white">
+              <LogOut className="h-4 w-4" />
+            </NavLink>
+          )}
         </div>
       </div>
     </div>
@@ -80,11 +136,13 @@ export function AppLayout() {
   const reference = useAsync(api.reference);
   const [open, setOpen] = useState(false);
   const location = useLocation();
-  const current = NAV.filter((n) => (n.end ? location.pathname === n.to : location.pathname.startsWith(n.to))).pop();
+  const { assessment, market } = useNavItems();
+  const current = [...assessment, ...market].filter((n) => (n.end ? location.pathname === n.to : location.pathname.startsWith(n.to))).sort((a, b) => a.to.length - b.to.length).pop();
 
   useEffect(() => {
-    document.title = `${current?.label ?? "App"} · Waste Before Waste`;
-  }, [current]);
+    const fallback = location.pathname.includes("/supplier") ? "Supplier Marketplace" : location.pathname.includes("/market") ? "Marketplace" : "App";
+    document.title = `${current?.label ?? fallback} · Waste Before Waste`;
+  }, [current, location.pathname]);
 
   if (reference.loading && !reference.data) return <LoadingScreen />;
 
