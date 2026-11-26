@@ -11,6 +11,7 @@ export class ApiError extends Error {
 }
 
 const TOKEN_KEY = "wbw.token";
+export const SESSION_ENDED = "wbw:session-ended";
 export const authToken = {
   get: () => localStorage.getItem(TOKEN_KEY),
   set: (token: string) => localStorage.setItem(TOKEN_KEY, token),
@@ -28,6 +29,11 @@ export async function request<T>(path: string, init?: RequestInit): Promise<T> {
     });
   } catch {
     throw new ApiError("Cannot reach the assessment service. Is the backend running on port 8000?", 0);
+  }
+  if (res.status === 401 && token) {
+    // The server no longer accepts this sign-in: drop it so the app shows the sign-in prompt.
+    authToken.clear();
+    window.dispatchEvent(new Event(SESSION_ENDED));
   }
   if (!res.ok) {
     let detail = `Request failed (${res.status}).`;
