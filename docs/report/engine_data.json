@@ -1,0 +1,632 @@
+{
+ "products": [
+  {
+   "name": "Single-use plastic water bottle",
+   "category": "Packaging",
+   "qty": 10000,
+   "weight": 0.025,
+   "per_unit": {
+    "carbon_kg": 0.1071,
+    "carbon_low_kg": 0.07554,
+    "carbon_high_kg": 0.1387,
+    "energy_kwh": 0.6944,
+    "water_l": 1.846,
+    "waste_kg": 0.0007732,
+    "raw_material_kg": 0.02977
+   },
+   "batch": {
+    "carbon_kg": 1071.0,
+    "energy_kwh": 6944.0,
+    "water_l": 18460.0,
+    "waste_kg": 7.732,
+    "raw_material_kg": 297.7
+   },
+   "stages": {
+    "materials": 0.07732,
+    "manufacturing": 0.0168,
+    "packaging": 0.0104,
+    "transport": 0.00116,
+    "end_of_life": 0.00145
+   },
+   "shares": {
+    "materials": 72.2,
+    "manufacturing": 15.7,
+    "packaging": 9.7,
+    "transport": 1.1,
+    "end_of_life": 1.4
+   },
+   "dq": "Low (screening grade)",
+   "unc": 30,
+   "hotspots": [
+    [
+     "Raw materials",
+     "high"
+    ],
+    [
+     "Manufacturing energy",
+     "low"
+    ],
+    [
+     "Process energy intensity",
+     "medium"
+    ]
+   ],
+   "recs": [
+    {
+     "title": "Replace Virgin plastic (PET) with Recycled plastic (rPET)",
+     "verdict": "beneficial",
+     "sig": "clear",
+     "carbon": -43.3,
+     "water": -55.8,
+     "material": 0.0
+    },
+    {
+     "title": "Source renewable electricity",
+     "verdict": "beneficial",
+     "sig": "clear",
+     "carbon": -14.4,
+     "water": 0.0,
+     "material": 0.0
+    },
+    {
+     "title": "Improve manufacturing energy efficiency",
+     "verdict": "beneficial",
+     "sig": "marginal",
+     "carbon": -4.5,
+     "water": 0.0,
+     "material": 0.0
+    },
+    {
+     "title": "Lightweight the packaging by 20%",
+     "verdict": "beneficial",
+     "sig": "marginal",
+     "carbon": -2.0,
+     "water": -2.2,
+     "material": -2.7
+    },
+    {
+     "title": "Switch packaging to recycled cardboard",
+     "verdict": "mixed",
+     "sig": "clear",
+     "carbon": 2.2,
+     "water": -2.2,
+     "material": 13.4
+    },
+    {
+     "title": "Consider reusable transit packaging",
+     "verdict": "advisory",
+     "sig": "not_quantified",
+     "carbon": null,
+     "water": null,
+     "material": null
+    },
+    {
+     "title": "Design and label the product for recycling",
+     "verdict": "advisory",
+     "sig": "not_quantified",
+     "carbon": null,
+     "water": null,
+     "material": null
+    },
+    {
+     "title": "Evaluate a reusable product design",
+     "verdict": "advisory",
+     "sig": "not_quantified",
+     "carbon": null,
+     "water": null,
+     "material": null
+    }
+   ],
+   "applied": 4,
+   "optimized_batch_carbon": 427.9,
+   "metrics": [
+    [
+     "Carbon footprint",
+     1071.0,
+     427.9,
+     -60.0
+    ],
+    [
+     "Energy consumption",
+     6944.0,
+     3091.0,
+     -55.5
+    ],
+    [
+     "Water consumption",
+     18460.0,
+     7755.0,
+     -58.0
+    ],
+    [
+     "Material consumption",
+     297.7,
+     289.7,
+     -2.7
+    ],
+    [
+     "Manufacturing waste",
+     7.732,
+     7.732,
+     0.0
+    ]
+   ]
+  },
+  {
+   "name": "Cotton crew-neck T-shirt",
+   "category": "Textiles",
+   "qty": 5000,
+   "weight": 0.18,
+   "per_unit": {
+    "carbon_kg": 2.372,
+    "carbon_low_kg": 1.44,
+    "carbon_high_kg": 3.304,
+    "energy_kwh": 4.011,
+    "water_l": 1820.0,
+    "waste_kg": 0.045,
+    "raw_material_kg": 0.233
+   },
+   "batch": {
+    "carbon_kg": 11860.0,
+    "energy_kwh": 20050.0,
+    "water_l": 9102000.0,
+    "waste_kg": 225.0,
+    "raw_material_kg": 1165.0
+   },
+   "stages": {
+    "materials": 1.125,
+    "manufacturing": 0.328,
+    "packaging": 0.0208,
+    "transport": 0.7896,
+    "end_of_life": 0.1084
+   },
+   "shares": {
+    "materials": 47.4,
+    "manufacturing": 13.8,
+    "packaging": 0.9,
+    "transport": 33.3,
+    "end_of_life": 4.6
+   },
+   "dq": "Very low (indicative only)",
+   "unc": 40,
+   "hotspots": [
+    [
+     "Raw materials",
+     "high"
+    ],
+    [
+     "Transportation",
+     "medium"
+    ],
+    [
+     "Manufacturing energy",
+     "low"
+    ],
+    [
+     "Process energy intensity",
+     "high"
+    ],
+    [
+     "Manufacturing waste",
+     "medium"
+    ],
+    [
+     "Water use",
+     "high"
+    ]
+   ],
+   "recs": [
+    {
+     "title": "Shift freight from air freight to sea freight",
+     "verdict": "beneficial",
+     "sig": "clear",
+     "carbon": -32.6,
+     "water": 0.0,
+     "material": 0.0
+    },
+    {
+     "title": "Source renewable electricity",
+     "verdict": "beneficial",
+     "sig": "clear",
+     "carbon": -13.2,
+     "water": 0.0,
+     "material": 0.0
+    },
+    {
+     "title": "Replace Cotton (conventional) with Organic cotton",
+     "verdict": "beneficial",
+     "sig": "clear",
+     "carbon": -9.5,
+     "water": -12.4,
+     "material": 0.0
+    },
+    {
+     "title": "Improve manufacturing energy efficiency",
+     "verdict": "beneficial",
+     "sig": "marginal",
+     "carbon": -4.1,
+     "water": 0.0,
+     "material": 0.0
+    },
+    {
+     "title": "Reduce manufacturing scrap",
+     "verdict": "beneficial",
+     "sig": "clear",
+     "carbon": -2.8,
+     "water": -5.8,
+     "material": -5.7
+    },
+    {
+     "title": "Switch packaging to recycled cardboard",
+     "verdict": "mixed",
+     "sig": "marginal",
+     "carbon": 1.6,
+     "water": 0.0,
+     "material": 3.4
+    },
+    {
+     "title": "Design for recyclability",
+     "verdict": "advisory",
+     "sig": "not_quantified",
+     "carbon": null,
+     "water": null,
+     "material": null
+    },
+    {
+     "title": "Extend product lifespan with more durable materials",
+     "verdict": "advisory",
+     "sig": "not_quantified",
+     "carbon": null,
+     "water": null,
+     "material": null
+    },
+    {
+     "title": "Design for repair",
+     "verdict": "advisory",
+     "sig": "not_quantified",
+     "carbon": null,
+     "water": null,
+     "material": null
+    }
+   ],
+   "applied": 5,
+   "optimized_batch_carbon": 5016.0,
+   "metrics": [
+    [
+     "Carbon footprint",
+     11860.0,
+     5016.0,
+     -57.7
+    ],
+    [
+     "Energy consumption",
+     20050.0,
+     16970.0,
+     -15.4
+    ],
+    [
+     "Water consumption",
+     9102000.0,
+     7514000.0,
+     -17.4
+    ],
+    [
+     "Material consumption",
+     1165.0,
+     1099.0,
+     -5.7
+    ],
+    [
+     "Manufacturing waste",
+     225.0,
+     158.8,
+     -29.4
+    ]
+   ]
+  },
+  {
+   "name": "Aluminium laptop stand",
+   "category": "Consumer goods",
+   "qty": 2000,
+   "weight": 0.85,
+   "per_unit": {
+    "carbon_kg": 17.09,
+    "carbon_low_kg": 10.52,
+    "carbon_high_kg": 23.66,
+    "energy_kwh": 70.94,
+    "water_l": 111.8,
+    "waste_kg": 0.4577,
+    "raw_material_kg": 1.368
+   },
+   "batch": {
+    "carbon_kg": 34180.0,
+    "energy_kwh": 141900.0,
+    "water_l": 223500.0,
+    "waste_kg": 915.4,
+    "raw_material_kg": 2735.0
+   },
+   "stages": {
+    "materials": 15.23,
+    "manufacturing": 1.536,
+    "packaging": 0.198,
+    "transport": 0.09828,
+    "end_of_life": 0.02722
+   },
+   "shares": {
+    "materials": 89.1,
+    "manufacturing": 9.0,
+    "packaging": 1.2,
+    "transport": 0.6,
+    "end_of_life": 0.2
+   },
+   "dq": "Very low (indicative only)",
+   "unc": 40,
+   "hotspots": [
+    [
+     "Raw materials",
+     "high"
+    ],
+    [
+     "Process energy intensity",
+     "medium"
+    ],
+    [
+     "Manufacturing waste",
+     "high"
+    ]
+   ],
+   "recs": [
+    {
+     "title": "Replace Aluminium (primary) with Recycled aluminium",
+     "verdict": "beneficial",
+     "sig": "clear",
+     "carbon": -77.8,
+     "water": -74.9,
+     "material": 0.0
+    },
+    {
+     "title": "Reduce manufacturing scrap",
+     "verdict": "beneficial",
+     "sig": "clear",
+     "carbon": -11.9,
+     "water": -12.7,
+     "material": -12.7
+    },
+    {
+     "title": "Source renewable electricity",
+     "verdict": "beneficial",
+     "sig": "clear",
+     "carbon": -8.3,
+     "water": 0.0,
+     "material": 0.0
+    },
+    {
+     "title": "Improve manufacturing energy efficiency",
+     "verdict": "beneficial",
+     "sig": "marginal",
+     "carbon": -1.8,
+     "water": 0.0,
+     "material": 0.0
+    },
+    {
+     "title": "Lightweight the packaging by 20%",
+     "verdict": "beneficial",
+     "sig": "marginal",
+     "carbon": -0.2,
+     "water": -0.6,
+     "material": -0.9
+    },
+    {
+     "title": "Switch packaging to moulded pulp (recycled fibre)",
+     "verdict": "mixed",
+     "sig": "marginal",
+     "carbon": -0.6,
+     "water": -0.8,
+     "material": 3.5
+    }
+   ],
+   "applied": 5,
+   "optimized_batch_carbon": 4129.0,
+   "metrics": [
+    [
+     "Carbon footprint",
+     34180.0,
+     4129.0,
+     -87.9
+    ],
+    [
+     "Energy consumption",
+     141900.0,
+     21590.0,
+     -84.8
+    ],
+    [
+     "Water consumption",
+     223500.0,
+     48690.0,
+     -78.2
+    ],
+    [
+     "Material consumption",
+     2735.0,
+     2363.0,
+     -13.6
+    ],
+    [
+     "Manufacturing waste",
+     915.4,
+     566.7,
+     -38.1
+    ]
+   ]
+  },
+  {
+   "name": "Flat-pack side table",
+   "category": "Furniture",
+   "qty": 1500,
+   "weight": 6.5,
+   "per_unit": {
+    "carbon_kg": 13.37,
+    "carbon_low_kg": 8.13,
+    "carbon_high_kg": 18.62,
+    "energy_kwh": 36.42,
+    "water_l": 2272.0,
+    "waste_kg": 1.833,
+    "raw_material_kg": 9.233
+   },
+   "batch": {
+    "carbon_kg": 20060.0,
+    "energy_kwh": 54630.0,
+    "water_l": 3408000.0,
+    "waste_kg": 2750.0,
+    "raw_material_kg": 13850.0
+   },
+   "stages": {
+    "materials": 5.705,
+    "manufacturing": 2.205,
+    "packaging": 0.81,
+    "transport": 0.888,
+    "end_of_life": 3.766
+   },
+   "shares": {
+    "materials": 42.7,
+    "manufacturing": 16.5,
+    "packaging": 6.1,
+    "transport": 6.6,
+    "end_of_life": 28.2
+   },
+   "dq": "Very low (indicative only)",
+   "unc": 40,
+   "hotspots": [
+    [
+     "Raw materials",
+     "high"
+    ],
+    [
+     "End-of-life",
+     "medium"
+    ],
+    [
+     "Manufacturing energy",
+     "low"
+    ]
+   ],
+   "recs": [
+    {
+     "title": "Source renewable electricity",
+     "verdict": "beneficial",
+     "sig": "clear",
+     "carbon": -15.2,
+     "water": 0.0,
+     "material": 0.0
+    },
+    {
+     "title": "Design and label the product for recycling",
+     "verdict": "beneficial",
+     "sig": "clear",
+     "carbon": -15.2,
+     "water": 0.0,
+     "material": 0.0
+    },
+    {
+     "title": "Shift freight from road (truck) to rail freight",
+     "verdict": "beneficial",
+     "sig": "clear",
+     "carbon": -5.0,
+     "water": 0.0,
+     "material": 0.0
+    },
+    {
+     "title": "Lightweight the packaging by 20%",
+     "verdict": "beneficial",
+     "sig": "marginal",
+     "carbon": -2.7,
+     "water": -0.3,
+     "material": -1.9
+    },
+    {
+     "title": "Improve manufacturing energy efficiency",
+     "verdict": "beneficial",
+     "sig": "marginal",
+     "carbon": -1.6,
+     "water": 0.0,
+     "material": 0.0
+    },
+    {
+     "title": "Switch packaging to recycled cardboard",
+     "verdict": "mixed",
+     "sig": "marginal",
+     "carbon": -1.4,
+     "water": -0.7,
+     "material": 0.5
+    }
+   ],
+   "applied": 5,
+   "optimized_batch_carbon": 12640.0,
+   "metrics": [
+    [
+     "Carbon footprint",
+     20060.0,
+     12640.0,
+     -37.0
+    ],
+    [
+     "Energy consumption",
+     54630.0,
+     52610.0,
+     -3.7
+    ],
+    [
+     "Water consumption",
+     3408000.0,
+     3398000.0,
+     -0.3
+    ],
+    [
+     "Material consumption",
+     13850.0,
+     13580.0,
+     -1.9
+    ],
+    [
+     "Manufacturing waste",
+     2750.0,
+     2750.0,
+     0.0
+    ]
+   ]
+  }
+ ],
+ "lab": [
+  {
+   "label": "Virgin PET",
+   "mass_g": 25,
+   "grid": 0.1023,
+   "renew": 0.09133
+  },
+  {
+   "label": "Recycled PET",
+   "mass_g": 25,
+   "grid": 0.05594,
+   "renew": 0.04494
+  },
+  {
+   "label": "Glass",
+   "mass_g": 280,
+   "grid": 0.6769,
+   "renew": 0.4059
+  },
+  {
+   "label": "Aluminium",
+   "mass_g": 28,
+   "grid": 0.3965,
+   "renew": 0.3867
+  },
+  {
+   "label": "Recycled aluminium",
+   "mass_g": 28,
+   "grid": 0.06053,
+   "renew": 0.05067
+  }
+ ]
+}
