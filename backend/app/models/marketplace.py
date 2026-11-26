@@ -69,6 +69,8 @@ class User(Base):
 
 
 class AuthToken(Base):
+    """Revocation list: signed-out tokens (by hash) until they expire. Valid tokens are not stored."""
+
     __tablename__ = "auth_tokens"
 
     token_hash: Mapped[str] = mapped_column(String(64), primary_key=True)

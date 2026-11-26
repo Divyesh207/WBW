@@ -251,3 +251,40 @@ def test_manufacturer_dashboard_links_to_assessment_recommendations(client):
     assert "recycled_plastic" in recommended  # the demo bottle assessment recommends rPET
     for match in dash["recommended_matches"]:
         assert all(item["material_id"] == match["material_id"] for item in match["listings"])
+
+
+# ------------------------------------------------------------------ sessions survive server restarts
+def test_demo_session_survives_a_fresh_database(client):
+    """Serverless instances (e.g. Vercel) start with an empty /tmp database that is re-seeded.
+    A token issued by one instance must still be accepted by the next."""
+    from app.database import Base, SessionLocal, engine
+    from app.services.assessment_service import seed_demo
+    from app.services.marketplace_seed import seed_marketplace
+
+    token = client.post("/api/auth/login", json={"email": "manufacturer@wbw.demo", "password": DEMO_PASSWORD}).json()["token"]
+    headers = {"Authorization": f"Bearer {token}"}
+    assert client.get("/api/market/requests", headers=headers).status_code == 200
+
+    Base.metadata.drop_all(engine)  # simulate a brand-new server instance
+    Base.metadata.create_all(engine)
+    with SessionLocal() as db:
+        seed_demo(db)
+        seed_marketplace(db)
+
+    assert client.get("/api/auth/me", headers=headers).json()["email"] == "manufacturer@wbw.demo"
+    assert client.get("/api/market/requests", headers=headers).status_code == 200
+
+
+def test_tampered_and_expired_tokens_are_rejected(client):
+    import base64
+    import json
+
+    from app.services import auth
+
+    token = client.post("/api/auth/login", json={"email": "manufacturer@wbw.demo", "password": DEMO_PASSWORD}).json()["token"]
+    payload, signature = token.split(".")
+    forged = base64.urlsafe_b64encode(json.dumps({"sub": "ecopolymer@wbw.demo", "exp": 9999999999, "jti": "x"}).encode()).rstrip(b"=").decode()
+    assert client.get("/api/auth/me", headers={"Authorization": f"Bearer {forged}.{signature}"}).status_code == 401
+    expired = auth._b64(json.dumps({"sub": "manufacturer@wbw.demo", "exp": 1, "jti": "y"}).encode())
+    assert client.get("/api/auth/me", headers={"Authorization": f"Bearer {expired}.{auth._sign(expired)}"}).status_code == 401
+    assert client.get("/api/auth/me", headers={"Authorization": "Bearer not-a-token"}).status_code == 401

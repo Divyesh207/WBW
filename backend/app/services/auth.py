@@ -1,13 +1,25 @@
 """Accounts and bearer-token authentication (standard library only).
 
-Passwords are stored as salted PBKDF2-SHA256 hashes. Login returns a random
-token; only its SHA-256 hash is stored, so a leaked database does not reveal
-usable tokens. Tokens expire after TOKEN_DAYS.
+Passwords are stored as salted PBKDF2-SHA256 hashes.
+
+Sign-in returns a *signed* token (payload + HMAC-SHA256 signature) that carries
+the user's email and an expiry time. Any server instance holding the same
+secret can verify it without a database lookup, so a session survives server
+restarts and serverless platforms (such as Vercel) where each instance starts
+with its own temporary database. Signed-out tokens are kept on a small
+revocation list until they expire.
+
+Set WBW_SECRET_KEY in production. Without it a fixed development key is used,
+which keeps local and demo deployments working but must not be used for real data.
 """
 from __future__ import annotations
 
+import base64
 import hashlib
 import hmac
+import json
+import logging
+import os
 import secrets
 from datetime import datetime, timedelta, timezone
 
@@ -20,6 +32,11 @@ from app.models.marketplace import AuthToken, SupplierProfile, User
 
 ITERATIONS = 200_000
 TOKEN_DAYS = 14
+
+_DEV_SECRET = "wbw-development-secret-change-me"
+SECRET_KEY = os.getenv("WBW_SECRET_KEY") or _DEV_SECRET
+if SECRET_KEY == _DEV_SECRET:
+    logging.getLogger("wbw.auth").warning("WBW_SECRET_KEY is not set; using the development signing key.")
 
 
 def hash_password(password: str) -> str:
@@ -45,16 +62,48 @@ def _utcnow() -> datetime:
     return datetime.now(timezone.utc).replace(tzinfo=None)
 
 
+def _b64(data: bytes) -> str:
+    return base64.urlsafe_b64encode(data).rstrip(b"=").decode()
+
+
+def _unb64(text: str) -> bytes:
+    return base64.urlsafe_b64decode(text + "=" * (-len(text) % 4))
+
+
+def _sign(payload: str) -> str:
+    return _b64(hmac.new(SECRET_KEY.encode(), payload.encode(), hashlib.sha256).digest())
+
+
 def issue_token(db: Session, user: User) -> str:
-    token = secrets.token_urlsafe(32)
-    db.execute(delete(AuthToken).where(AuthToken.expires_at < _utcnow()))  # housekeeping
-    db.add(AuthToken(token_hash=_token_hash(token), user_id=user.id, expires_at=_utcnow() + timedelta(days=TOKEN_DAYS)))
-    db.commit()
-    return token
+    """Signed token: base64url(JSON payload) + "." + signature. Nothing is stored."""
+    expires = _utcnow() + timedelta(days=TOKEN_DAYS)
+    payload = _b64(json.dumps({"sub": user.email, "exp": int(expires.replace(tzinfo=timezone.utc).timestamp()), "jti": secrets.token_hex(8)}, separators=(",", ":")).encode())
+    return f"{payload}.{_sign(payload)}"
+
+
+def decode_token(token: str) -> dict | None:
+    """Return the payload of a valid, unexpired token, or None."""
+    try:
+        payload, signature = token.split(".")
+        if not hmac.compare_digest(signature, _sign(payload)):
+            return None
+        data = json.loads(_unb64(payload))
+        if data["exp"] < datetime.now(timezone.utc).timestamp():
+            return None
+        return data
+    except (ValueError, KeyError, TypeError):
+        return None
 
 
 def revoke_token(db: Session, token: str) -> None:
-    db.execute(delete(AuthToken).where(AuthToken.token_hash == _token_hash(token)))
+    """Sign-out: remember the token as revoked until it would have expired anyway."""
+    data = decode_token(token)
+    if data is None:
+        return
+    db.execute(delete(AuthToken).where(AuthToken.expires_at < _utcnow()))  # housekeeping
+    if db.get(AuthToken, _token_hash(token)) is None:
+        user = db.scalar(select(User).where(User.email == data["sub"]))
+        db.add(AuthToken(token_hash=_token_hash(token), user_id=user.id if user else 0, expires_at=datetime.fromtimestamp(data["exp"], timezone.utc).replace(tzinfo=None)))
     db.commit()
 
 
@@ -111,15 +160,15 @@ def optional_user(authorization: str | None = Header(default=None), db: Session 
     token = bearer_token(authorization)
     if not token:
         return None
-    row = db.get(AuthToken, _token_hash(token))
-    if row is None or row.expires_at < _utcnow():
+    data = decode_token(token)
+    if data is None or db.get(AuthToken, _token_hash(token)) is not None:  # invalid, expired or signed out
         return None
-    return db.get(User, row.user_id)
+    return db.scalar(select(User).where(User.email == data["sub"]))
 
 
 def current_user(user: User | None = Depends(optional_user)) -> User:
     if user is None:
-        raise HTTPException(status_code=401, detail="Please sign in to use the marketplace.")
+        raise HTTPException(status_code=401, detail="Your session has ended. Please sign in again.")
     return user
 
 

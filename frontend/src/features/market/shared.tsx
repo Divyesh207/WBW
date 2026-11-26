@@ -134,14 +134,14 @@ export function OrderTimeline({ events }: { events: OrderEvent[] }) {
 /* ------------------------------------------------------------ access gate */
 /** Shows children only to a signed-in user with the required role. */
 export function RequireRole({ role, children }: { role: Role; children: ReactNode }) {
-  const { user, checking } = useAuth();
+  const { user, checking, sessionEnded } = useAuth();
   if (checking) return <Spinner label="Checking your account…" />;
   if (!user) {
     return (
       <EmptyState
         icon={<Lock className="h-8 w-8" />}
-        title="Sign in to use the Supplier Marketplace"
-        description={role === "supplier" ? "Supplier tools need a supplier account. Sign in or create one to list materials and manage requests." : "Requests and orders need a manufacturer account. Sign in or create one to contact suppliers."}
+        title={sessionEnded ? "Your session has ended" : "Sign in to use the Supplier Marketplace"}
+        description={sessionEnded ? "For your security you were signed out. Sign in again to continue where you left off." : role === "supplier" ? "Supplier tools need a supplier account. Sign in or create one to list materials and manage requests." : "Requests and orders need a manufacturer account. Sign in or create one to contact suppliers."}
         action={<ButtonLink to={`/signin?next=${encodeURIComponent(window.location.pathname + window.location.search)}`}>Sign in or create account</ButtonLink>}
       />
     );

@@ -82,7 +82,8 @@ Connects manufacturers with recyclers, waste producers and sustainable material 
 | Repeat a previous request or order | |
 | Dashboard with suppliers for materials the assessment recommends | |
 
-- **Accounts:** email + password, PBKDF2-SHA256 hashing, bearer tokens (only token hashes are stored). Assessment tools remain usable without signing in.
+- **Accounts:** email + password, PBKDF2-SHA256 hashing, and signed (HMAC-SHA256) bearer tokens that any server instance can verify without a database lookup, so sessions survive restarts and serverless instances. Set `WBW_SECRET_KEY` to a long random value in production; without it a development key is used. Signed-out tokens are kept on a revocation list until they expire. Assessment tools remain usable without signing in.
+- **Deploying on Vercel:** the default SQLite database lives in each serverless instance's temporary storage, so accounts, requests and orders created there can disappear when an instance is recycled. For a deployment that keeps data, point `WBW_DATABASE_URL` at a hosted database.
 - **Access control:** every endpoint checks the role and ownership; a supplier can never see another supplier's requests or orders.
 - **Stock:** placing an order reserves stock; cancelling returns it.
 - **Link to the assessment engine:** listings can be tied to a library material, so recommendations such as "replace virgin PET with rPET" link straight to suppliers of rPET.
