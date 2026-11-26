@@ -1,5 +1,6 @@
 import { useMemo, useState } from "react";
-import { ArrowDown, ArrowUp, ChevronDown, Minus, RefreshCw } from "lucide-react";
+import { ArrowDown, ArrowUp, ChevronDown, Minus, RefreshCw, Store } from "lucide-react";
+import { Link } from "react-router-dom";
 import { IndexedCompareChart, StageCompareChart } from "../../components/charts";
 import { Badge, Button, Card, CardHeader, EmptyState, EstimateTag, Notice } from "../../components/ui";
 import { useToast } from "../../components/Toast";
@@ -77,6 +78,11 @@ export function RecommendationCard({ rec, checked, onToggle, readOnly }: { rec: 
             </dl>
           )}
 
+          {rec.id.startsWith("material:") && (
+            <Link to={`/app/market/browse?material_id=${rec.id.split(":")[2]}`} className="no-print mt-3 inline-flex items-center gap-1.5 rounded-md border border-brand-green/40 bg-emerald-50 px-2.5 py-1 text-xs font-medium text-brand-green hover:bg-emerald-100">
+              <Store className="h-3.5 w-3.5" aria-hidden /> Find suppliers for this material
+            </Link>
+          )}
           <button type="button" className="no-print mt-3 flex items-center gap-1 text-xs font-medium text-brand-green hover:underline" onClick={() => setOpen((o) => !o)} aria-expanded={open}>
             {open ? "Hide" : "Show"} cost, feasibility and trade-offs
             <ChevronDown className={cx("h-3.5 w-3.5 transition-transform", open && "rotate-180")} aria-hidden />

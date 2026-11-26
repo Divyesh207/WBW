@@ -24,7 +24,7 @@ class Base(DeclarativeBase):
 
 
 def init_db() -> None:
-    from app.models import assessment  # noqa: F401  (registers the table)
+    from app.models import assessment, marketplace  # noqa: F401  (registers the tables)
 
     Base.metadata.create_all(engine)
 

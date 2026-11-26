@@ -68,6 +68,30 @@ Open **http://localhost:5173**. The database is created and seeded with four dem
 - **Material explorer** — browse and compare the factor library.
 - **Persistence** — every assessment is stored in SQLite.
 
+## Supplier Marketplace
+
+Connects manufacturers with recyclers, waste producers and sustainable material suppliers.
+
+| Manufacturer | Supplier / waste producer |
+| --- | --- |
+| Browse and filter listings (category, material, grade, price, location, stock) | Register a company profile |
+| Compare 2–4 listings on price, quality, quantity and availability | Create, edit, hide and archive listings |
+| Send material requests (quantity, target price, required-by date) | Accept, quote or decline requests |
+| Accept a quote and place an order | Confirm, dispatch and deliver orders |
+| Track order status with a timeline | Dashboard: new requests, orders, revenue, low stock |
+| Repeat a previous request or order | |
+| Dashboard with suppliers for materials the assessment recommends | |
+
+- **Accounts:** email + password, PBKDF2-SHA256 hashing, bearer tokens (only token hashes are stored). Assessment tools remain usable without signing in.
+- **Access control:** every endpoint checks the role and ownership; a supplier can never see another supplier's requests or orders.
+- **Stock:** placing an order reserves stock; cancelling returns it.
+- **Link to the assessment engine:** listings can be tied to a library material, so recommendations such as "replace virgin PET with rPET" link straight to suppliers of rPET.
+- **Demo data:** four fictional suppliers, ten listings and one demo manufacturer are seeded on first start (`backend/app/services/marketplace_seed.py`). Demo password for all: `Demo@2026` — e.g. `manufacturer@wbw.demo`, `ecopolymer@wbw.demo`, `metalloop@wbw.demo`.
+
+Database tables: `users`, `auth_tokens`, `supplier_profiles`, `listings`, `material_requests`, `orders`, `order_events`.
+
+API: `/api/auth/*` (register, login, logout, me) and `/api/market/*` (listings, compare, suppliers, supplier profile and listings, requests, respond, order, repeat, orders, order status, dashboard). Full reference at `/api/docs`.
+
 ## How the calculation works
 
 ```
@@ -120,7 +144,7 @@ WBW/
 │   │   ├── database/                   SQLite engine (wbw.db is created here)
 │   │   └── assets/fonts/               Sora and Inter for the PDF
 │   ├── scripts/export_lab_snapshot.py  regenerates the landing page's offline data
-│   └── tests/                          43 unit and API tests
+│   └── tests/                          58 unit and API tests
 └── frontend/
     ├── package.json, vite.config.ts, tailwind.config.js
     ├── public/assets/brand/            official logo files + usage notes

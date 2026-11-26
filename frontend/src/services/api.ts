@@ -10,12 +10,21 @@ export class ApiError extends Error {
   }
 }
 
-async function request<T>(path: string, init?: RequestInit): Promise<T> {
+const TOKEN_KEY = "wbw.token";
+export const authToken = {
+  get: () => localStorage.getItem(TOKEN_KEY),
+  set: (token: string) => localStorage.setItem(TOKEN_KEY, token),
+  clear: () => localStorage.removeItem(TOKEN_KEY),
+};
+
+/** JSON request to the backend. Sends the signed-in user's token when there is one. */
+export async function request<T>(path: string, init?: RequestInit): Promise<T> {
   let res: Response;
+  const token = authToken.get();
   try {
     res = await fetch(`/api${path}`, {
       ...init,
-      headers: { "Content-Type": "application/json", ...(init?.headers ?? {}) },
+      headers: { "Content-Type": "application/json", ...(token ? { Authorization: `Bearer ${token}` } : {}), ...(init?.headers ?? {}) },
     });
   } catch {
     throw new ApiError("Cannot reach the assessment service. Is the backend running on port 8000?", 0);
